@@ -87,7 +87,9 @@ func StringVar(p *string, name string, value string, usage string) {
 }
 func (es *EnvSet) StringVar(p *string, name string, value string, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.String()
+	if p != nil {
+		*p = e.String()
+	}
 	es.Add(e)
 }
 
@@ -123,7 +125,9 @@ func BoolVar(p *bool, name string, value bool, usage string) {
 }
 func (es *EnvSet) BoolVar(p *bool, name string, value bool, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.MustBool()
+	if p != nil {
+		*p = e.MustBool()
+	}
 	es.Add(e)
 }
 
@@ -152,7 +156,9 @@ func IntVar(p *int, name string, value int, usage string) {
 }
 func (es *EnvSet) IntVar(p *int, name string, value int, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.MustInt()
+	if p != nil {
+		*p = e.MustInt()
+	}
 	es.Add(e)
 }
 
@@ -181,7 +187,9 @@ func Int64Var(p *int64, name string, value int64, usage string) {
 }
 func (es *EnvSet) Int64Var(p *int64, name string, value int64, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.MustInt64()
+	if p != nil {
+		*p = e.MustInt64()
+	}
 	es.Add(e)
 }
 
@@ -212,7 +220,9 @@ func Float64Var(p *float64, name string, value float64, usage string) {
 }
 func (es *EnvSet) Float64Var(p *float64, name string, value float64, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.MustFloat64()
+	if p != nil {
+		*p = e.MustFloat64()
+	}
 	es.Add(e)
 }
 
@@ -243,7 +253,9 @@ func DurationVar(p *time.Duration, name string, value time.Duration, usage strin
 }
 func (es *EnvSet) DurationVar(p *time.Duration, name string, value time.Duration, usage string) {
 	e := es.New(name, value, usage)
-	*p = e.MustDuration()
+	if p != nil {
+		*p = e.MustDuration()
+	}
 	es.Add(e)
 }
 
