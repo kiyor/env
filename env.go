@@ -281,8 +281,10 @@ func (es *EnvSet) Add(e *Env) {
 		es.envMap[e.Name] = e
 		es.envs = append(es.envs, e.Name)
 	} else {
-		Log.Printf("env defined already %s; exist: %s; overwrite: %s", e.Name, val.String(), e.String())
-		es.envMap[e.Name] = e
+		if val.String() != e.String() {
+			Log.Printf("env defined already %s; exist: %s; overwrite: %s", e.Name, val.String(), e.String())
+			es.envMap[e.Name] = e
+		}
 	}
 }
 func Get(name string) *Env {
